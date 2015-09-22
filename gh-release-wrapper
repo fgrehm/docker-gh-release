@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -e
+
+: ${GITHUB_ACCESS_TOKEN:?"Please set your GitHub access token"}
+
+docker run -ti --rm \
+           -v `pwd`:/project \
+           -w /project \
+           -e GITHUB_ACCESS_TOKEN="${GITHUB_ACCESS_TOKEN}" \
+           fgrehm/gh-release \
+           $*
