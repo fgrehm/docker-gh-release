@@ -2,6 +2,10 @@
 
 set -e
 
+if [[ -f $HOME/.config/gh-access-token ]]; then
+  GITHUB_ACCESS_TOKEN=$(cat $HOME/.config/gh-access-token)
+fi
+
 : ${GITHUB_ACCESS_TOKEN:?"Please set your GitHub access token"}
 
 docker run -ti --rm \
